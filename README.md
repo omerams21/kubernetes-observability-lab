@@ -13,3 +13,10 @@ Assignment 8
   The command can be safely executed multiple times. If the release does not exist, it will be installed; if it exists, it will be upgraded to match the desired state defined in the values files.  
   This supports a declarative and GitOps-friendly workflow.
 
+
+## Logging with Loki and Fluent Bit
+
+- Fluent Bit collects Kubernetes pod logs from the cluster nodes and forwards them to Loki.
+- Loki stores logs centrally and allows querying them using labels such as namespace, pod, and container.
+- Grafana can use Loki as a data source to explore, search, and visualize logs in a unified interface.
+
