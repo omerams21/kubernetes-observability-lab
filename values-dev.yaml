@@ -1,0 +1,8 @@
+grafana:
+  adminPassword: devadmin
+  service:
+    type: ClusterIP
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
