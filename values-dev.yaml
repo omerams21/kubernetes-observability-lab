@@ -6,3 +6,35 @@ grafana:
 prometheus:
   prometheusSpec:
     retention: 7d
+
+grafana:
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      access: proxy
+      url: http://loki-dev:3100
+      isDefault: false
+
+additionalPrometheusRulesMap:
+  node-alerts:
+    groups:
+      - name: node-alerts
+        rules:
+          - alert: HighCPU
+            expr: sum(rate(container_cpu_usage_seconds_total[5m])) > 0.8
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: "High CPU usage detected"
+
+prometheus:
+  prometheusSpec:
+    retention: 7d
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi

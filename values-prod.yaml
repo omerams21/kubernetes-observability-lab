@@ -9,3 +9,14 @@ prometheus:
 
 prometheus-node-exporter:
   enabled: false
+
+prometheus:
+  prometheusSpec:
+    retention: 30d
+    resources:
+      requests:
+        cpu: 500m
+        memory: 1Gi
+      limits:
+        cpu: 1
+        memory: 2Gi
